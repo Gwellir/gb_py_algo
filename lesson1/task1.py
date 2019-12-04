@@ -6,8 +6,8 @@ d1 = x // 100
 d2 = x // 10 % 10
 d3 = x % 10
 
-sum = d1 + d2 + d3
-mult = d1 * d2 * d3
+digit_sum = d1 + d2 + d3
+digit_mult = d1 * d2 * d3
 
-print(f'Сумма цифр равняется: {sum}')
-print(f'Произведение цифр равняется: {mult}')
+print(f'Сумма цифр равняется: {digit_sum}')
+print(f'Произведение цифр равняется: {digit_mult}')
