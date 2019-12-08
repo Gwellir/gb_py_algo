@@ -17,7 +17,7 @@ def get_total_count(amount, digit):
         return 0
     else:
         total = get_total_count(amount - 1, digit)
-        num = int(input(f'Натуральное число {amount}: '))
+        num = int(input(f'Натуральное число №{amount}: '))
         return total + digit_count(num, digit)
 
 
