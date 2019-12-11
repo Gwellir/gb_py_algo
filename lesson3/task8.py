@@ -5,12 +5,12 @@
 WIDTH = 4
 HEIGHT = 5
 
-matrix = [[0 for _ in range(0, WIDTH)] for _ in range(0, HEIGHT)]
+matrix = [[0 for _ in range(WIDTH)] for _ in range(HEIGHT)]
 
 cell_size = 0
-for k in range(0, len(matrix)):
+for k in range(len(matrix)):
     row_sum = 0
-    for i in range(0, WIDTH - 1):
+    for i in range(WIDTH - 1):
         matrix[k][i] = value = int(input(f'Введите целое значение для ячейки [{k}][{i}]: '))
         row_sum += value
         if cell_size < len(str(value)):

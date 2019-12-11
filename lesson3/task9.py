@@ -7,12 +7,12 @@ HEIGHT = 10
 MIN_ITEM = 0
 MAX_ITEM = 100
 
-matrix = [[random.randint(MIN_ITEM, MAX_ITEM) for _ in range(0, WIDTH)] for _ in range(0, HEIGHT)]
+matrix = [[random.randint(MIN_ITEM, MAX_ITEM) for _ in range(WIDTH)] for _ in range(HEIGHT)]
 print(*matrix, sep='\n')
 print()
 
-minimums = [matrix[0][col] for col in range(0, WIDTH)]
-for c in range(0, WIDTH):
+minimums = [matrix[0][col] for col in range(WIDTH)]
+for c in range(WIDTH):
     for r in range(1, HEIGHT):
         if matrix[r][c] < minimums[c]:
             minimums[c] = matrix[r][c]
