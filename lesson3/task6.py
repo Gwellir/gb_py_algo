@@ -22,10 +22,10 @@ start, end = min_elem[0], max_elem[0]
 if start > end:
     start, end = end, start
 
-sum = 0
+elem_sum = 0
 for i in range(start + 1, end):
-    sum += array[i]
+    elem_sum += array[i]
 
-print(f'Сумма элементов от №{start}({array[start]}) до №{end}({array[end]}): {sum}')
+print(f'Сумма элементов от №{start}({array[start]}) до №{end}({array[end]}): {elem_sum}')
 
 

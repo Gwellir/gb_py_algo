@@ -14,7 +14,7 @@ for i in range(0, SIZE):
     numbers[array[i]] = numbers.get(array[i], 0) + 1
 max_amount = 1
 top_number = array[0]
-for key in numbers.keys():
+for key in numbers:
     if numbers[key] > max_amount:
         max_amount = numbers[key]
         top_number = key

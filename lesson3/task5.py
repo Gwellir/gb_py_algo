@@ -13,7 +13,7 @@ print(array)
 index = -1
 start = len(array)
 max_negative = 0
-for i in range(0, len(array)):
+for i in range(len(array)):
     if array[i] < 0:
         max_negative = array[i]
         index = start = i
