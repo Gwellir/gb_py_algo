@@ -67,7 +67,6 @@ def find_prime_array(n):
         return 0
 
 
-print(find_prime_array(100000))
 assert make_sieve_up_to(10000) == find_prime(10000) == find_prime_array(10000) == 104729
 
 num_tries = 30
@@ -97,6 +96,7 @@ make_sieve_up_to(%d)
 #    100 - 3.1873761
 #   1000 - 3.7171217
 #  10000 - 4.821120199999999
+print("Решето - размер 300000")
 print("   100 -", timeit.timeit(s1 % (300000, 100), number=num_tries))
 print("  1000 -", timeit.timeit(s1 % (300000, 1000), number=num_tries))
 print(" 10000 -", timeit.timeit(s1 % (300000, 10000), number=num_tries))
@@ -104,6 +104,7 @@ print(" 10000 -", timeit.timeit(s1 % (300000, 10000), number=num_tries))
 #    100 - 1.0423869000000003
 #   1000 - 1.2431915999999994
 #  10000 - 2.1739677000000004
+print("Решето - размер порядка простого числа N 10000")
 print("   100 -", timeit.timeit(s1 % (105000, 100), number=num_tries))
 print("  1000 -", timeit.timeit(s1 % (105000, 1000), number=num_tries))
 print(" 10000 -", timeit.timeit(s1 % (105000, 10000), number=num_tries))
@@ -132,6 +133,7 @@ find_prime({num})
 #    100 - 0.01924529999999791
 #   1000 - 0.37429429999999897
 #  10000 - 11.2184582
+print("Проверка чисел на простоту перебором делителей")
 print("   100 -", timeit.timeit(s2.format(num=100), number=num_tries, globals=globals()))
 print("  1000 -", timeit.timeit(s2.format(num=1000), number=num_tries, globals=globals()))
 print(" 10000 -", timeit.timeit(s2.format(num=10000), number=num_tries, globals=globals()))
@@ -164,8 +166,9 @@ find_prime_array({num})
 #    100 - 0.01135539999999935
 #   1000 - 0.2260965999999982
 #  10000 - 5.514904800000004
-print("   100 -", timeit.timeit(s3.format(num=100), number=num_tries, globals=globals()))
-print("  1000 -", timeit.timeit(s3.format(num=1000), number=num_tries, globals=globals()))
-print(" 10000 -", timeit.timeit(s3.format(num=10000), number=num_tries, globals=globals()))
+print("Проверка чисел на простоту перебором делителей с составлением массива простых делителей")
+print("   100 -", timeit.timeit(s3.format(num=100), number=num_tries))
+print("  1000 -", timeit.timeit(s3.format(num=1000), number=num_tries))
+print(" 10000 -", timeit.timeit(s3.format(num=10000), number=num_tries))
 # 100000 ~ 140 секунд
-print("100000 -", timeit.timeit(s3.format(num=100000), number=num_tries, globals=globals()))
+# print("100000 -", timeit.timeit(s3.format(num=100000), number=num_tries, globals=globals()))

@@ -15,6 +15,7 @@ import random
 import timeit
 import cProfile
 
+
 def make_array(num):
     return [random.randint(0, num) for _ in range(num)]
 
@@ -82,9 +83,9 @@ print(sorted(test_array))
 dct = most_frequent_dict(test_array)
 srt = most_frequent_sort(test_array)
 cnt = most_frequent_count(test_array)
-print('dict: ', dct)
-print('sort: ', srt)
-print('sort: ', cnt)
+print(' dict: ', dct)
+print(' sort: ', srt)
+print('count: ', cnt)
 assert test_array.count(dct[1]) == test_array.count(srt[1]) == test_array.count(cnt[1])
 print('Test passed.\n')
 # print(array_as_str)
