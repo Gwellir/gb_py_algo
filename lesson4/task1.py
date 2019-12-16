@@ -74,6 +74,46 @@ def most_frequent_count(num_array):
     return top_number, max_count
 
 
+#          20004 function calls in 6.423 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.000    0.000    6.389    6.389 <string>:1(<module>)
+#         1    0.007    0.007    6.389    6.389 task1.py:66(most_frequent_count)
+#         1    0.034    0.034    6.423    6.423 {built-in method builtins.exec}
+#     20000    6.382    0.000    6.382    0.000 {method 'count' of 'list' objects}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+#
+#
+#          1000005 function calls in 2.663 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.039    0.039    0.680    0.680 <string>:1(<module>)
+#         1    0.490    0.490    0.641    0.641 task1.py:30(most_frequent_dict)
+#         1    1.982    1.982    2.663    2.663 {built-in method builtins.exec}
+#         1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+#   1000000    0.151    0.000    0.151    0.000 {method 'get' of 'dict' objects}
+#
+#
+#          6 function calls in 2.684 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.037    0.037    0.733    0.733 <string>:1(<module>)
+#         1    0.226    0.226    0.697    0.697 task1.py:45(most_frequent_sort)
+#         1    1.950    1.950    2.684    2.684 {built-in method builtins.exec}
+#         1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+#         1    0.471    0.471    0.471    0.471 {method 'sort' of 'list' objects}
+cProfile.run('most_frequent_count([%s])' % stringify(make_array(20000)))
+cProfile.run('most_frequent_dict([%s])' % stringify(make_array(1000000)))
+cProfile.run('most_frequent_sort([%s])' % stringify(make_array(1000000)))
+
 # только для тестов
 SIZE = 100
 
@@ -88,12 +128,9 @@ print(' sort: ', srt)
 print('count: ', cnt)
 assert test_array.count(dct[1]) == test_array.count(srt[1]) == test_array.count(cnt[1])
 print('Test passed.\n')
-# print(array_as_str)
-
 
 # всё ещё достаточно точно, позволяет за адекватное время проверить dict и sort на 1М элементов
 num_tests = 30
-
 
 s1 = """
 def most_frequent_dict(num_array):

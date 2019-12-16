@@ -11,6 +11,7 @@
 
 import math
 import timeit
+import cProfile
 
 LIMIT = 300000
 
@@ -68,6 +69,44 @@ def find_prime_array(n):
 
 
 assert make_sieve_up_to(10000) == find_prime(10000) == find_prime_array(10000) == 104729
+
+#          5 function calls in 0.218 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.001    0.001    0.218    0.218 <string>:1(<module>)
+#         1    0.203    0.203    0.217    0.217 task2.py:19(make_sieve_up_to)
+#         1    0.014    0.014    0.014    0.014 task2.py:20(<listcomp>)
+#         1    0.000    0.000    0.218    0.218 {built-in method builtins.exec}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+#
+#
+#          993109 function calls in 9.109 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.000    0.000    9.109    9.109 <string>:1(<module>)
+#         1    8.892    8.892    9.109    9.109 task2.py:36(find_prime)
+#         1    0.000    0.000    9.109    9.109 {built-in method builtins.exec}
+#    993105    0.216    0.000    0.216    0.000 {built-in method math.sqrt}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+#
+#
+#          78003 function calls in 3.271 seconds
+#
+#    Ordered by: standard name
+#
+#    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+#         1    0.001    0.001    3.271    3.271 <string>:1(<module>)
+#         1    3.262    3.262    3.270    3.270 task2.py:52(find_prime_array)
+#         1    0.000    0.000    3.271    3.271 {built-in method builtins.exec}
+#     77999    0.007    0.000    0.007    0.000 {method 'append' of 'list' objects}
+#         1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+cProfile.run('make_sieve_up_to(78000)')
+cProfile.run('find_prime(78000)')
+cProfile.run('find_prime_array(78000)')
 
 num_tries = 30
 
