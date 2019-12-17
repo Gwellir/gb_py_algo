@@ -7,6 +7,9 @@
 from collections import deque, defaultdict, Counter
 
 
+HEX_STR = '0123456789ABCDEF'
+
+
 # построение таблицы сложения
 def make_sum_table(digit_str):
     spam_dq = deque(digit_str)
@@ -95,8 +98,6 @@ def dq_mult(dq1, dq2):
     return mult
 
 
-HEX_STR = '0123456789ABCDEF'
-
 # поиск символа по номеру
 base_str = HEX_STR
 base_count = Counter(HEX_STR)  # ну в общем-то и преобразования в сет хватило бы, но пусть будет
@@ -125,11 +126,10 @@ for x in base_mult_table:
     for y in base_mult_table[x]:
         print(f"{''.join(base_mult_table[x][y]):>2}", ' ', end='')
     print()
-print()
 
 # Основной цикл
 while True:
-    op = input('Введите тип операции - "+" или "*" (иное для завершения): ')
+    op = input('\nВведите тип операции - "+" или "*" (иное для завершения): ')
     if op == '+':
         n1 = deque(input('Введите первое слагаемое: '))
         n2 = deque(input('Введите второе слагаемое: '))
