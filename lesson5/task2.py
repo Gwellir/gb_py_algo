@@ -27,11 +27,11 @@ def make_sum_table(digit_str):
 
 # построение таблицы умножения
 def make_mult_table(digit_str):
-    spam_dq = deque([deque(base_str[0]) for _ in base_str])
+    spam_dq = deque([deque(digit_str[0]) for _ in digit_str])
     mult_table = defaultdict(dict)
-    for d1 in base_str:
+    for d1 in digit_str:
         sub_dict = {}
-        for d2 in base_str:
+        for d2 in digit_str:
             sub_dict[d2] = spam_dq.popleft()
             spam_dq.append(dq_sum(sub_dict[d2], d2))  # модификация очереди между строками
         mult_table[d1] = sub_dict
@@ -131,18 +131,28 @@ for x in base_mult_table:
 while True:
     op = input('\nВведите тип операции - "+" или "*" (иное для завершения): ')
     if op == '+':
-        n1 = deque(input('Введите первое слагаемое: '))
-        n2 = deque(input('Введите второе слагаемое: '))
-        sum_ = dq_sum(n1, n2)
-        print(f'Результат:\n{n1}\n+\n{n2}\n=\n{sum_}')
-        if base_str == HEX_STR:
-            assert ''.join(sum_) == hex(int(''.join(n1), 16) + int(''.join(n2), 16))[2:].upper(), 'Не сходится!'
+        n1 = deque(input('Введите первое слагаемое: ').upper())
+        n2 = deque(input('Введите второе слагаемое: ').upper())
+        n1_test = [x for x in n1 if x not in base_str]
+        n2_test = [x for x in n2 if x not in base_str]
+        if n1_test or n2_test:
+            print('В слагаемых есть символы, которые не используются в строке кодирования!')
+        else:
+            sum_ = dq_sum(n1, n2)
+            print(f'Результат:\n{n1}\n+\n{n2}\n=\n{sum_}')
+            if base_str == HEX_STR:
+                assert ''.join(sum_) == hex(int(''.join(n1), 16) + int(''.join(n2), 16))[2:].upper(), 'Не сходится!'
     elif op == '*':
-        n1 = deque(input('Введите первый множитель: '))
-        n2 = deque(input('Введите второй множитель: '))
-        mult_ = dq_mult(n1, n2)
-        print(f"Результат: {''.join(mult_)}\n{n1}\n*\n{n2}\n=\n{mult_}")
-        if base_str == HEX_STR:
-            assert ''.join(mult_) == hex(int(''.join(n1), 16) * int(''.join(n2), 16))[2:].upper(), 'Не сходится!'
+        n1 = deque(input('Введите первый множитель: ').upper())
+        n2 = deque(input('Введите второй множитель: ').upper())
+        n1_test = [x for x in n1 if x not in base_str]
+        n2_test = [x for x in n2 if x not in base_str]
+        if n1_test or n2_test:
+            print('В множителях есть символы, которые не используются в строке кодирования!')
+        else:
+            mult_ = dq_mult(n1, n2)
+            print(f"Результат: {''.join(mult_)}\n{n1}\n*\n{n2}\n=\n{mult_}")
+            if base_str == HEX_STR:
+                assert ''.join(mult_) == hex(int(''.join(n1), 16) * int(''.join(n2), 16))[2:].upper(), 'Не сходится!'
     else:
         break
