@@ -9,9 +9,7 @@ MAX_ITEM = 50
 
 
 def merge_sort(arr, start, end):
-    if end - start == 1:
-        return
-    elif end - start == 2:
+    if end - start < 3:
         if arr[start] > arr[end - 1]:
             arr[start], arr[end - 1] = arr[end - 1], arr[start]
         return
