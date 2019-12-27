@@ -8,7 +8,7 @@ MIN_ITEM = 0
 MAX_ITEM = 100
 
 
-# тесты показывают, что поиск работает как минимум быстрее O(N*logN)
+# тесты показывают, что поиск на неоднородном массиве работает как минимум быстрее O(N*logN)
 def get_median(arr):
     end = len(arr) - 1
     start = 0
@@ -16,9 +16,13 @@ def get_median(arr):
     while True:
         left = start
         right = end
+        counter = 0
         while left < right:
             if arr[left] >= arr[left + 1]:
-                arr[left], arr[left + 1] = arr[left + 1], arr[left]
+                if arr[left] == arr[left + 1]:
+                    counter += 1  # для потенциального ускорения работы с очень однообразными массивами
+                else:
+                    arr[left], arr[left + 1] = arr[left + 1], arr[left]
                 left += 1
             else:
                 arr[left + 1], arr[right] = arr[right], arr[left + 1]
@@ -26,10 +30,12 @@ def get_median(arr):
         if left < mid:
             start = left + 1
         elif left > mid:
-            end = left - 1
+            if left - counter <= mid:
+                return arr[left]
+            else:
+                end = left - 1
         else:
-            break
-    return arr[left]
+            return arr[left]
 
 
 m = int(input('Введите m для генерации массива длиной 2m + 1: '))
