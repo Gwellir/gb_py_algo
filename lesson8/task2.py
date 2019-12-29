@@ -39,9 +39,9 @@ class WeightedTree:
             print(f'"{self.symbol}": {prefix}')
             table.append((self.symbol, prefix, ))
         else:
-            table.extend(self._right.get_table(prefix + '1'))
+            table.extend(self._right.get_table(f'{prefix}1'))
             if self._left:
-                table.extend(self._left.get_table(prefix + '0'))
+                table.extend(self._left.get_table(f'{prefix}0'))
         return table
 
 
