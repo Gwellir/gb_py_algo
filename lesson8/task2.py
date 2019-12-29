@@ -3,6 +3,9 @@
 from collections import Counter, deque
 
 
+DELIM = '-'*30
+
+
 class WeightedTree:
     def __init__(self, weight=0, symbol=None, left=None, right=None):
         self.symbol = symbol
@@ -86,7 +89,7 @@ coder = {x[0]: x[1] for x in coding_deque}
 decoder = {x[1]: x[0] for x in coding_deque}
 
 coded_s = ''.join([coder[c] for c in s1])
-print(s1, coded_s, sep='\n')
+print(DELIM, f'str => {s1}', f'enc => {coded_s}', DELIM, sep='\n')
 
 buffer = ''
 decoded_s = ''
@@ -95,5 +98,5 @@ for c in coded_s:
     if buffer in decoder:
         decoded_s += decoder[buffer]
         buffer = ''
-print(decoded_s)
+print(f'dec => {decoded_s}')
 assert s1 == decoded_s, 'Функция кодирования работает некорректно'
