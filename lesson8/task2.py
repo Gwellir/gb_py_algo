@@ -73,7 +73,7 @@ def build_tree(dq):
 
 
 # s1 = 'beep boop beer!'
-s1 = input('> ')
+s1 = input('Введите строку для кодирования: ')
 count1 = Counter(s1)
 print(count1)
 dq_weights = deque([WeightedTree(entry[1], entry[0]) for entry in count1.most_common()])
