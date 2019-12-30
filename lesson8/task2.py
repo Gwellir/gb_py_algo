@@ -19,12 +19,6 @@ class HuffmanTree:
         symbol = f'"{self.symbol}"' if self.symbol else '..'
         return f'{symbol}:{self.weight} [{left}] [{right}]'
 
-    def __str__(self):
-        left = self._left if self._left else '..'
-        right = self._right if self._right else '..'
-        symbol = f'"{self.symbol}"' if self.symbol else '..'
-        return f'{symbol}:{self.weight} [{left}] [{right}]'
-
     def attach_right(self, node):
         self._right = node
         self.weight += node.weight
@@ -65,7 +59,7 @@ class HuffmanCoder:
             node_upper = HuffmanTree()
             node_upper.attach_left(dq.popleft())
             node_upper.attach_right(dq.popleft())
-            # print(node_upper)
+            print(node_upper)
             dq_head = deque()
             while True:
                 curr_node = dq.popleft()
